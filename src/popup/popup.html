@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Downloader</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="header-row">
+      <h1>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="6 3 20 12 6 21 6 3"/>
+        </svg>
+        Videos
+      </h1>
+      <span id="status" class="status">Scanning&hellip;</span>
+      <button type="button" id="btn-settings" title="Settings" aria-label="Settings">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83
+                   2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0
+                   0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9
+                   19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1
+                   1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68
+                   15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1
+                   0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0
+                   0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65
+                   1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1
+                   1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0
+                   1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65
+                   1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2
+                   2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <section id="settings-view" class="settings hidden">
+    <label for="defaultFormat">Default format</label>
+    <select id="defaultFormat">
+      <option value="">Auto (keep original)</option>
+      <option value="mp4">MP4</option>
+      <option value="webm">WebM</option>
+    </select>
+
+    <label for="downloadPath">Download subfolder</label>
+    <input id="downloadPath" type="text" placeholder="e.g. Videos (blank = default)">
+  </section>
+
+  <main>
+    <!-- Direct video sources -->
+    <ul id="video-list" class="video-list"></ul>
+
+    <!-- Iframe-embedded streams -->
+    <div id="iframe-section" class="section hidden">
+      <h2 class="section-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        Embedded Streams
+      </h2>
+      <ul id="iframe-list" class="video-list"></ul>
+    </div>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="empty-state hidden">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <p>No videos detected on this page.</p>
+      <button type="button" id="btn-rescan" class="btn btn-secondary">Rescan</button>
+    </div>
+  </main>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
