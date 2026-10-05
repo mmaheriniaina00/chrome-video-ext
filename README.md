@@ -2,6 +2,8 @@
 
 Chrome extension (Manifest V3) that detects videos on a web page and downloads them for offline viewing.
 
+![Screenshot](assets/screenshot.png)
+
 ## Features
 
 - Detects direct videos (`mp4`, `webm`…) and HLS (`m3u8`) / DASH (`mpd`) streams
